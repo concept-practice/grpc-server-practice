@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option csharp_namespace = "NAA.FleetService.Protos";
+
+package airplane;
+
+service AirplaneService {
+    rpc AllAirplanes (AllAirplanesRequest) returns (AllAirplanesResponse);
+    rpc GetAirplaneById (GetAirplaneByIdRequest) returns (AirplaneResponse);
+    rpc AddAirplane (AddAirplaneRequest) returns (AirplaneResponse);
+    rpc DeleteAirplane (DeleteAirplaneRequest) returns (Unit);
+}
+
+message AllAirplanesRequest {
+}
+
+message AllAirplanesResponse {
+    repeated AirplaneResponse entities = 1;
+}
+
+message GetAirplaneByIdRequest {
+    string id = 1;
+}
+
+message AddAirplaneRequest {
+    string manufacturer = 1;
+    string model = 2;
+    string registration = 3;
+}
+
+message AirplaneResponse {
+    string id = 1;
+	string manufacturer = 2;
+    string model = 3;
+    string registration = 4;
+}
+
+message Unit {
+}
+
+message DeleteAirplaneRequest {
+    string id = 1;
+}
+
